@@ -9,7 +9,7 @@ const User = require("./models/user.models");
 
 // Hashing authentication
 const md5 = require("md5");
-console.log(md5("Hashing"));
+// console.log(md5("Hashing"));
 
 // middleware
 app.use(express.json());
@@ -30,9 +30,25 @@ app.get("/register", (req, res) => {
 app.get("/success", (req, res) => {
   res.sendFile(path.join(__dirname, "views/success.html"));
 });
+app.get("/error", (req, res) => {
+  res.sendFile(path.join(__dirname, "views/error.html"));
+});
 
-app.post("/login", (req, res) => {
-  console.log(req.body);
+// User login
+app.post("/login", async (req, res) => {
+  try {
+    const email = req.body.email;
+    const password = md5(req.body.password);
+    const user = await User.findOne({ email });
+
+    if (user && user.password === password) {
+      res.redirect("/success");
+    } else {
+      res.redirect("/error");
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
 });
 
 // Create user and save to database
@@ -45,7 +61,7 @@ app.post("/register", async (req, res) => {
     });
     await newUser.save();
     // res.status(200).json(newUser);
-    res.status(200).redirect("/success");
+    res.status(200).redirect("/login");
   } catch (error) {
     console.log(error);
   }
