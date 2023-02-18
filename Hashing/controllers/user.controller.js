@@ -1,16 +1,16 @@
-const getAllUsers = (res, req) => {
+const getAllUsers = (req, res) => {
   res.send("All users get");
 };
-const getOneUser = (res, req) => {
+const getOneUser = (req, res) => {
   res.send("One user get");
 };
-const createUser = (res, req) => {
+const createUser = (req, res) => {
   res.send("user created");
 };
-const deleteUser = (res, req) => {
+const deleteUser = (req, res) => {
   res.send("user deleted");
 };
-const updateUser = (res, req) => {
+const updateUser = (req, res) => {
   res.send("user updated");
 };
 
