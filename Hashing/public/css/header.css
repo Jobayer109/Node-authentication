@@ -1,0 +1,44 @@
+body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+		
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		
+		header a {
+			color: #fff;
+			text-decoration: none;
+			margin-left: 20px;
+		}
+		
+		header a:hover {
+			color: #ccc;
+		}
+		
+		.login-register {
+			display: flex;
+			align-items: center;
+		}
+		
+		.login-register a {
+			margin-left: 20px;
+			background-color: #fff;
+			color: #333;
+			padding: 10px 20px;
+			border-radius: 5px;
+			text-decoration: none;
+			font-weight: bold;
+		}
+		
+		.login-register a:hover {
+			background-color: #ccc;
+			color: #fff;
+		}
