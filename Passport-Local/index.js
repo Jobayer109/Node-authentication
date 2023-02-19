@@ -94,7 +94,7 @@ app.get("/logout", (req, res) => {
 // Login user
 app.post(
   "/login",
-  passport.authenticate("local", { failureRedirect: "/profile", successRedirect: "/profile" })
+  passport.authenticate("local", { failureRedirect: "/login", successRedirect: "/profile" })
 );
 
 // Create user
