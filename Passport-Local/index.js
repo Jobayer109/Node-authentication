@@ -46,14 +46,14 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views/index.html"));
 });
 
-const checkLoggedIn = (req, res, next) => {
-  if (req.isAuthenticated) {
-    return res.redirect("/profile");
-  }
-  next();
-};
+// const checkLoggedIn = (req, res, next) => {
+//   if (req.isAuthenticated) {
+//     return res.redirect("/profile");
+//   }
+//   next();
+// };
 
-app.get("/login", checkLoggedIn, (req, res) => {
+app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "views/login.html"));
 });
 app.get("/register", (req, res) => {
@@ -71,10 +71,10 @@ app.get("/profile", (req, res) => {
 
 // profile page protect
 app.get("/profile", (req, res) => {
-  if (!req.isAuthenticated) {
-    return res.redirect("/login");
+  if (req.isAuthenticated) {
+    res.redirect("/profile");
   }
-  res.redirect("/profile");
+  res.redirect("/login");
 });
 
 // Logout user
